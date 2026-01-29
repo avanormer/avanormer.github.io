@@ -1,1 +1,584 @@
-Hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariana Van Ormer | Trader Joe’s Taste Rankings</title>
+  <style>
+    :root{
+      --tj-red:#b11226;
+      --tj-red-dark:#8f0f1f;
+      --white:#ffffff;
+      --off-white:#fff6f6;
+      --text:#1b1b1b;
+      --muted:#6a6a6a;
+      --border:rgba(177,18,38,.18);
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(177,18,38,.10), transparent 60%),
+        radial-gradient(700px 400px at 90% 10%, rgba(177,18,38,.08), transparent 60%),
+        linear-gradient(180deg, var(--off-white), var(--white));
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1100px, 92vw); margin:0 auto; }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:240px;
+    }
+    .brand h1{
+      margin:0;
+      font-size:1.15rem;
+      letter-spacing:.2px;
+      font-weight:800;
+    }
+    .brand p{
+      margin:0;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+    /* Nav */
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:10px;
+      padding:0;
+      margin:0;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--text);
+      font-weight:650;
+      font-size:.92rem;
+      transition: all .2s ease;
+      white-space:nowrap;
+    }
+    nav a:hover{
+      border-color:var(--border);
+      background:rgba(177,18,38,.06);
+      transform: translateY(-1px);
+    }
+    .nav-cta{
+      background:var(--tj-red);
+      color:var(--white);
+      box-shadow:0 10px 22px rgba(177,18,38,.18);
+    }
+    .nav-cta:hover{
+      background:var(--tj-red-dark);
+      border-color:transparent;
+    }
+
+    /* Hero */
+    .hero{
+      padding:44px 0 22px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(600px 300px at 0% 0%, rgba(177,18,38,.14), transparent 55%);
+      pointer-events:none;
+    }
+    .hero-card > *{ position:relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(177,18,38,.08);
+      border:1px solid var(--border);
+      color:var(--tj-red-dark);
+      font-weight:750;
+      font-size:.85rem;
+      width:fit-content;
+    }
+    .hero h2{
+      margin:14px 0 10px;
+      font-size:2rem;
+      line-height:1.15;
+      letter-spacing:-.3px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:1rem;
+      max-width:60ch;
+    }
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      font-weight:750;
+      font-size:.95rem;
+      transition: all .2s ease;
+      background:var(--white);
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow:0 12px 26px rgba(0,0,0,.08); }
+    .btn-primary{
+      background:var(--tj-red);
+      color:var(--white);
+      border-color:transparent;
+    }
+    .btn-primary:hover{ background:var(--tj-red-dark); }
+
+    /* Featured preview card */
+    .featured-preview{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      padding:22px;
+      background: linear-gradient(180deg, rgba(177,18,38,.06), rgba(177,18,38,.02));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      height:100%;
+    }
+    .tag-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:750;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.8);
+      color:var(--tj-red-dark);
+    }
+    .featured-preview h3{
+      margin:0;
+      font-size:1.15rem;
+      letter-spacing:-.2px;
+    }
+    .rating{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      background:rgba(255,255,255,.8);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 14px;
+    }
+    .score{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .score strong{ font-size:1.3rem; }
+    .score span{ font-size:.86rem; color:var(--muted); font-weight:650; }
+    .stars{
+      font-size:1.15rem;
+      letter-spacing:2px;
+      color:var(--tj-red);
+      white-space:nowrap;
+    }
+
+    /* Sections */
+    main{ padding: 18px 0 60px; }
+    section{ scroll-margin-top: 90px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.2rem;
+      letter-spacing:-.2px;
+    }
+    .muted{ color:var(--muted); }
+
+    /* About this Featured Item section */
+    .featured-item{
+      margin-top:18px;
+    }
+    .featured-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .featured-title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .featured-title h3{
+      margin:0;
+      font-size:1.35rem;
+    }
+    .featured-title p{ margin:0; color:var(--muted); }
+
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .meta .pill{ color:var(--text); background:rgba(177,18,38,.06); }
+
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(177,18,38,.25), transparent);
+      margin:16px 0;
+    }
+
+    .rank-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .metric{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.8);
+    }
+    .metric strong{ display:block; font-size:.95rem; }
+    .metric span{ display:block; margin-top:4px; color:var(--muted); font-weight:650; }
+
+    .notes{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    .note{
+      border:1px dashed rgba(177,18,38,.35);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(177,18,38,.04);
+    }
+    .note h4{
+      margin:0 0 6px;
+      font-size:.98rem;
+    }
+    .note p{ margin:0; color:var(--muted); }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      padding:22px 0;
+      background:rgba(255,255,255,.75);
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .tiny{ font-size:.9rem; color:var(--muted); }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .rank-grid{ grid-template-columns: 1fr; }
+      .notes{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Ariana Van Ormer</h1>
+        <p>Babson College Business Student • Trader Joe’s Taste Rankings</p>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#featured">Featured Item</a></li>
+          <li><a href="#rankings">Rankings</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero" aria-label="Intro">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">🌶️ Trader Joe’s Taste Lab</div>
+          <h2>I taste, rank, and review Trader Joe’s finds—so you know what’s actually worth the cart space.</h2>
+          <p>
+            Quick, honest takes from a Babson College business student who loves branding, value, and the thrill of a new TJ’s drop.
+            Ratings consider flavor, texture, value, and “would I buy it again?”
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#featured">See the featured review</a>
+            <a class="btn" href="#rankings">Browse rankings</a>
+          </div>
+        </div>
+
+        <aside class="featured-preview" aria-label="Featured item preview">
+          <div class="tag-row">
+            <span class="pill">Featured This Week</span>
+            <span class="pill">Sweet</span>
+            <span class="pill">Snack</span>
+          </div>
+          <h3>Scandinavian Swimmers</h3>
+          <p class="muted" style="margin:0;">
+            Chewy gummy candy with a cult following. Here’s my ranking breakdown and what I’d pair it with.
+          </p>
+          <div class="rating" aria-label="Featured rating summary">
+            <div class="score">
+              <strong>8.6/10</strong>
+              <span>Overall Score</span>
+            </div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+          <a class="btn btn-primary" href="#featured" style="margin-top:auto;">Read full featured item</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Highlights">
+      <div class="card">
+        <h3>My ranking rubric</h3>
+        <p class="muted" style="margin:0;">
+          I score each item across <strong>Flavor</strong>, <strong>Texture</strong>, <strong>Value</strong>, and <strong>Rebuy Potential</strong>.
+          Then I average into an overall rating out of 10.
+        </p>
+        <div class="divider"></div>
+        <p class="muted" style="margin:0;">
+          Tip: If you’re building a snack board, I always include one “sweet,” one “salty,” and one “surprise” item.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Why Trader Joe’s?</h3>
+        <p class="muted" style="margin:0;">
+          It’s the perfect mix of product innovation, private-label strategy, and “limited-time” excitement.
+          Plus, the packaging is a branding masterclass.
+        </p>
+        <div class="divider"></div>
+        <p class="muted" style="margin:0;">
+          This site is my personal tasting log—part foodie fun, part business-student case study.
+        </p>
+      </div>
+    </section>
+
+    <section id="featured" class="featured-item" aria-label="About this Featured Item">
+      <div class="card">
+        <div class="featured-header">
+          <div class="featured-title">
+            <h3>About this Featured Item</h3>
+            <p>Scandinavian Swimmers (Trader Joe’s)</p>
+          </div>
+          <div class="meta" aria-label="Featured item metadata">
+            <span class="pill">Category: Candy</span>
+            <span class="pill">Best for: Movie nights</span>
+            <span class="pill">Vibe: Nostalgic</span>
+          </div>
+        </div>
+
+        <p class="muted" style="margin:0;">
+          Scandinavian Swimmers are TJ’s iconic gummy candy—soft-chewy, fruity, and dangerously easy to keep eating.
+          The flavors are bright without tasting overly artificial, and the texture hits that perfect middle ground:
+          not too sticky, not too hard.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="rank-grid" aria-label="Score breakdown">
+          <div class="metric">
+            <strong>Flavor</strong>
+            <span>9.0/10 — fruity, clean finish</span>
+          </div>
+          <div class="metric">
+            <strong>Texture</strong>
+            <span>8.5/10 — chewy without gluey</span>
+          </div>
+          <div class="metric">
+            <strong>Value</strong>
+            <span>8.3/10 — great for the price</span>
+          </div>
+        </div>
+
+        <div class="notes" aria-label="Tasting notes">
+          <div class="note">
+            <h4>Best moment to eat</h4>
+            <p>Mid-study break when you need a tiny dopamine boost.</p>
+          </div>
+          <div class="note">
+            <h4>Pairing idea</h4>
+            <p>Salty popcorn + these gummies = elite sweet/salty combo.</p>
+          </div>
+          <div class="note">
+            <h4>Who should buy it</h4>
+            <p>If you like soft gummies with bold fruit flavor, this is a safe win.</p>
+          </div>
+          <div class="note">
+            <h4>Would I rebuy?</h4>
+            <p>Yes—especially for road trips and movie nights.</p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="muted" style="margin:0;">
+          <strong>Overall:</strong> 8.6/10 — a reliable TJ’s classic that earns the hype.
+        </p>
+      </div>
+    </section>
+
+    <section id="rankings" style="margin-top:18px;" aria-label="Rankings">
+      <div class="card">
+        <h3>Top Picks (sample list)</h3>
+        <p class="muted" style="margin:0 0 14px;">
+          Swap these out as you try more items—this is built to be easy to update.
+        </p>
+
+        <div class="rank-grid" aria-label="Sample rankings">
+          <div class="metric">
+            <strong>#1 — Hold the Cone! Mini Ice Cream Cones</strong>
+            <span>9.2/10 — dessert perfection in mini form</span>
+          </div>
+          <div class="metric">
+            <strong>#2 — Scandinavian Swimmers</strong>
+            <span>8.6/10 — chewy classic, always solid</span>
+          </div>
+          <div class="metric">
+            <strong>#3 — Dark Chocolate Peanut Butter Cups</strong>
+            <span>8.4/10 — rich, satisfying, dangerously snackable</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:18px;" aria-label="Contact">
+      <div class="card">
+        <h3>Contact</h3>
+        <p class="muted" style="margin:0 0 12px;">
+          Want me to review something next? Send a suggestion.
+        </p>
+
+        <form onsubmit="event.preventDefault(); alert('Thanks! Your suggestion was received (demo form).');" aria-label="Suggestion form">
+          <div style="display:grid; gap:12px; grid-template-columns: 1fr 1fr;">
+            <label style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-weight:750;">Your name</span>
+              <input required type="text" placeholder="e.g., Sam" style="padding:12px 12px; border-radius:14px; border:1px solid var(--border); outline:none;">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-weight:750;">Email</span>
+              <input required type="email" placeholder="e.g., sam@email.com" style="padding:12px 12px; border-radius:14px; border:1px solid var(--border); outline:none;">
+            </label>
+          </div>
+
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
+            <span style="font-weight:750;">Item to review</span>
+            <input required type="text" placeholder="What should I try next?" style="padding:12px 12px; border-radius:14px; border:1px solid var(--border); outline:none;">
+          </label>
+
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
+            <span style="font-weight:750;">Why this item?</span>
+            <textarea rows="4" placeholder="Optional: what’s the hype?" style="padding:12px 12px; border-radius:14px; border:1px solid var(--border); outline:none; resize:vertical;"></textarea>
+          </label>
+
+          <button class="btn btn-primary" type="submit" style="margin-top:12px;">Send suggestion</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="tiny">© <span id="year"></span> Ariana Van Ormer • Personal TJ’s Rankings</div>
+      <div class="tiny">Designed in red + white • Built with simple HTML & CSS</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
