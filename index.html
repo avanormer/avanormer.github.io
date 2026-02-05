@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ariana Van Ormer</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #fafafa;
+      background: #f7f7f7;
       color: #222;
+      line-height: 1.6;
     }
 
     header {
@@ -21,27 +26,41 @@
       top: 0;
     }
 
+    header h1 {
+      margin: 0 0 8px 0;
+    }
+
     nav a {
       color: white;
-      margin-right: 16px;
       text-decoration: none;
+      margin-right: 16px;
       font-weight: bold;
     }
 
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     section {
-      padding: 40px;
       max-width: 900px;
-      margin: auto;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
     h2 {
       color: #b11226;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
 
     footer {
       background: #eee;
       text-align: center;
       padding: 20px;
+      margin-top: 60px;
       font-size: 0.9rem;
     }
   </style>
@@ -63,16 +82,17 @@
     <p>
       I am a Babson College business student with a strong interest in
       entrepreneurship, technology, and innovation. Growing up internationally
-      has shaped my global perspective and adaptability.
+      shaped my global perspective and adaptability, and I am excited to explore
+      how AI and technology can be leveraged in entrepreneurial environments.
     </p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <ul>
-      <li>FME Venture – Product & Market Strategy</li>
-      <li>Personal Website Development with AI</li>
-      <li>Business & Technology Research Projects</li>
+      <li>FME Venture – Business model and market strategy</li>
+      <li>Personal Website built using AI-generated code</li>
+      <li>Business & technology research projects</li>
     </ul>
   </section>
 
