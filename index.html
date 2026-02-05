@@ -5,63 +5,469 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ariana Van Ormer</title>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --border: rgba(255,255,255,.14);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+
+      --aqua: #22d3ee;
+      --violet: #a78bfa;
+      --pink: #fb7185;
+      --lime: #a3e635;
+      --amber: #fbbf24;
     }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f7f7;
-      color: #222;
-      line-height: 1.6;
+    *{ box-sizing:border-box; }
+
+    html, body { height: 100%; }
+
+    body{
+      margin:0;
+      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(34,211,238,.22), transparent 60%),
+        radial-gradient(700px 400px at 90% 10%, rgba(167,139,250,.20), transparent 60%),
+        radial-gradient(700px 400px at 20% 95%, rgba(251,113,133,.16), transparent 60%),
+        linear-gradient(180deg, #0b1220, #0b1220);
+      line-height: 1.55;
     }
 
-    header {
-      background: #b11226;
-      color: white;
-      padding: 24px;
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Top nav */
+    header{
       position: sticky;
       top: 0;
+      z-index: 50;
+      background: rgba(11,18,32,.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
-    header h1 {
-      margin: 0 0 8px 0;
+    .container{
+      width: min(1100px, 92vw);
+      margin: 0 auto;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-right: 16px;
-      font-weight: bold;
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    .brand{
+      display:flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 260px;
+    }
+    .brand h1{
+      margin:0;
+      font-size: 1.15rem;
+      letter-spacing: .2px;
+      font-weight: 800;
+    }
+    .brand p{
+      margin:0;
+      font-size: .9rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap: 10px;
+      padding:0;
+      margin:0;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    h2 {
-      color: #b11226;
+    nav a{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--text);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover{
+      border-color: var(--border);
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta{
+      background: linear-gradient(90deg, rgba(34,211,238,.9), rgba(167,139,250,.9));
+      border-color: transparent;
+      color: #08101f;
+      box-shadow: 0 10px 22px rgba(34,211,238,.18);
+    }
+    .nav-cta:hover{
+      background: linear-gradient(90deg, rgba(34,211,238,1), rgba(167,139,250,1));
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    /* Layout */
+    main{
+      padding: 26px 0 60px;
+    }
+
+    section{
+      scroll-margin-top: 92px;
+    }
+
+    .card{
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(34,211,238,.12);
+      border: 1px solid rgba(34,211,238,.25);
+      color: rgba(255,255,255,.92);
+      font-weight: 800;
+      font-size: .85rem;
+      width: fit-content;
+    }
+
+    .hero h2{
+      margin: 14px 0 10px;
+      font-size: 2.05rem;
+      line-height: 1.15;
+      letter-spacing: -0.4px;
+    }
+
+    .hero p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+      font-weight: 600;
+    }
+
+    .actions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      font-weight: 800;
+      font-size: .95rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.25);
+    }
+
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(251,113,133,.95), rgba(167,139,250,.95));
+      color: #0b1220;
+      border-color: transparent;
+    }
+    .btn-primary:hover{
+      background: linear-gradient(90deg, rgba(251,113,133,1), rgba(167,139,250,1));
+    }
+
+    .profile{
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06)),
+        radial-gradient(900px 420px at 10% 0%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(900px 420px at 90% 20%, rgba(251,113,133,.16), transparent 55%);
+    }
+
+    .avatar-wrap{
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      margin-bottom: 14px;
+    }
+
+    .avatar{
+      width: 62px;
+      height: 62px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,.06)),
+        linear-gradient(135deg, rgba(34,211,238,.55), rgba(167,139,250,.55), rgba(251,113,133,.45));
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+
+    .tag-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.88);
+    }
+    .pill.aqua{ border-color: rgba(34,211,238,.35); }
+    .pill.violet{ border-color: rgba(167,139,250,.35); }
+    .pill.pink{ border-color: rgba(251,113,133,.35); }
+    .pill.lime{ border-color: rgba(163,230,53,.35); }
+
+    .mini{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+    .stat strong{
+      font-size: 1.05rem;
+    }
+    .stat span{
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .section-title h3{
+      margin:0;
+      font-size: 1.35rem;
+      letter-spacing: -0.25px;
+    }
+    .muted{
+      color: var(--muted);
+      font-weight: 650;
+      margin: 0;
+    }
+
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+      margin: 16px 0;
+    }
+
+    /* Timeline */
+    .timeline{
+      display:grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .item{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.07);
+    }
+
+    .item h4{
+      margin: 0 0 4px;
+      font-size: 1.02rem;
+      letter-spacing: -0.15px;
+    }
+    .item .sub{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+    .item ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .item li{ margin: 6px 0; }
+
+    /* Featured section */
+    .featured-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
       margin-bottom: 10px;
     }
 
-    ul {
-      padding-left: 20px;
+    .featured-title{
+      display:flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 65ch;
+    }
+    .featured-title p{
+      margin:0;
+      color: var(--muted);
+      font-weight: 650;
     }
 
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-      font-size: 0.9rem;
+    .featured-meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items:center;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .metric{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.07);
+    }
+    .metric strong{
+      display:block;
+      font-size: .95rem;
+    }
+    .metric span{
+      display:block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* Contact */
+    form{
+      display:grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    label{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      font-weight: 800;
+    }
+
+    input, textarea{
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      outline: none;
+      font: inherit;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+
+    textarea{ resize: vertical; }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      background: rgba(11,18,32,.35);
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: .9rem;
+    }
+
+    .tiny{
+      font-size: .9rem;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      .metrics{ grid-template-columns: 1fr; }
+      .brand{ min-width: unset; }
     }
   </style>
 </head>
@@ -69,41 +475,154 @@
 <body>
 
   <header>
-    <h1>Ariana Van Ormer</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand">
+          <h1>Ariana Van Ormer</h1>
+          <p>Business Student • Tech + Entrepreneurship • Babson College</p>
+        </div>
+
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#featured">Featured</a></li>
+            <li><a class="nav-cta" href="#contact">Let’s Connect</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a Babson College business student with a strong interest in
-      entrepreneurship, technology, and innovation. Growing up internationally
-      shaped my global perspective and adaptability, and I am excited to explore
-      how AI and technology can be leveraged in entrepreneurial environments.
-    </p>
-  </section>
+  <main class="container">
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>FME Venture – Business model and market strategy</li>
-      <li>Personal Website built using AI-generated code</li>
-      <li>Business & technology research projects</li>
-    </ul>
-  </section>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="card">
+        <div class="kicker">✨ Building at the intersection of business & tech</div>
+        <h2>Hi, I’m Ariana — I love turning ideas into real products.</h2>
+        <p>
+          I’m a Babson College business student focused on <strong>entrepreneurship</strong>, <strong>technology</strong>,
+          and <strong>innovation</strong>. I’m especially interested in how AI can enhance customer experiences,
+          operations, and new venture creation.
+        </p>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: avanormer1@babson.edu</p>
-  </section>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
 
-  <footer>
-    <p>© 2026 Ariana Van Ormer</p>
-  </footer>
+        <div class="divider"></div>
 
-</body>
-</html>
+        <p class="muted">
+          Tip: This site was generated with AI so I can practice reading and understanding modern HTML/CSS.
+        </p>
+      </div>
+
+      <div class="card profile">
+        <div class="avatar-wrap">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <h3 style="margin:0;">Quick Snapshot</h3>
+            <p class="muted" style="margin:4px 0 0;">Global perspective • Fast learner • Builder mindset</p>
+          </div>
+        </div>
+
+        <div class="tag-row">
+          <span class="pill aqua">Tech Entrepreneurship</span>
+          <span class="pill violet">Marketing</span>
+          <span class="pill pink">Product Thinking</span>
+          <span class="pill lime">Innovation</span>
+        </div>
+
+        <div class="mini">
+          <div class="stat">
+            <strong>Babson College</strong>
+            <span>Class of 2028</span>
+          </div>
+          <div class="stat">
+            <strong>Interests</strong>
+            <span>AI • Startups • Brand</span>
+          </div>
+          <div class="stat">
+            <strong>Energy</strong>
+            <span>Curious & action-oriented</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + PROJECTS GRID -->
+    <section class="grid" aria-label="About and Projects">
+      <div id="about" class="card">
+        <div class="section-title">
+          <h3>About</h3>
+          <p class="muted">Who I am & what I care about</p>
+        </div>
+
+        <p class="muted">
+          I’m driven by the idea that <strong>change is leverage</strong>. Growing up internationally helped me adapt fast,
+          connect across cultures, and stay curious. I’m excited by projects where strategy meets execution — especially
+          in tech-enabled business models.
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="timeline">
+          <div class="item">
+            <h4>What I’m exploring right now</h4>
+            <p class="sub">Tech + entrepreneurship concentration focus</p>
+            <ul>
+              <li>How AI changes customer behavior and operational decisions</li>
+              <li>Building strong value propositions & go-to-market plans</li>
+              <li>Designing products people actually want to use</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="projects" class="card">
+        <div class="section-title">
+          <h3>Projects</h3>
+          <p class="muted">Hands-on work & experiments</p>
+        </div>
+
+        <div class="timeline">
+          <div class="item">
+            <h4>Personal Website (AI-generated)</h4>
+            <p class="sub">HTML • CSS • GitHub Pages</p>
+            <ul>
+              <li>Used AI to generate a richer site for code-reading practice</li>
+              <li>Improved layout, navigation, responsiveness, and UI cards</li>
+              <li>Deployed using GitHub Pages</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h4>Venture / Class Projects</h4>
+            <p class="sub">Strategy • Marketing • Operations</p>
+            <ul>
+              <li>Customer insights + value proposition development</li>
+              <li>Market segmentation & positioning</li>
+              <li>Iterative improvement based on feedback</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h4>Research Interests</h4>
+            <p class="sub">Business + technology topics</p>
+            <ul>
+              <li>AI in consumer experiences and decision-making</li>
+              <li>Food & retail trends from a business lens</li>
+              <li>Supplier relationships, negotiating power, and performance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section id="featured" class="card" aria-label="Featured Item">
+      <div class="featured-header">
+        <div class="featured-title">
