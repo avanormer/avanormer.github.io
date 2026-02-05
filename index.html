@@ -5,70 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ariana Van Ormer</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b1220;
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --border: rgba(255,255,255,.14);
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: rgba(17,24,39,.10);
+      --shadow: 0 18px 55px rgba(17,24,39,.10);
       --radius: 18px;
 
-      --aqua: #22d3ee;
-      --violet: #a78bfa;
-      --pink: #fb7185;
-      --lime: #a3e635;
-      --amber: #fbbf24;
+      --primary: #2563eb;
+      --accent: #10b981;
+      --soft: #eef2ff;
     }
 
-    *{ box-sizing:border-box; }
-
-    html, body { height: 100%; }
-
+    *{ box-sizing: border-box; }
     body{
       margin:0;
-      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(900px 500px at 10% -10%, rgba(34,211,238,.22), transparent 60%),
-        radial-gradient(700px 400px at 90% 10%, rgba(167,139,250,.20), transparent 60%),
-        radial-gradient(700px 400px at 20% 95%, rgba(251,113,133,.16), transparent 60%),
-        linear-gradient(180deg, #0b1220, #0b1220);
-      line-height: 1.55;
+        radial-gradient(900px 500px at 10% -10%, rgba(37,99,235,.20), transparent 60%),
+        radial-gradient(700px 450px at 95% 10%, rgba(16,185,129,.20), transparent 60%),
+        linear-gradient(180deg, var(--bg), #ffffff);
+      line-height: 1.6;
     }
 
-    a{
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Top nav */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(11,18,32,.55);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
+    a{ color: inherit; text-decoration: none; }
 
     .container{
       width: min(1100px, 92vw);
       margin: 0 auto;
     }
 
-    .header-inner{
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246,247,251,.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav{
       display:flex;
       align-items:center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 14px;
       padding: 14px 0;
     }
 
@@ -76,122 +64,104 @@
       display:flex;
       flex-direction: column;
       gap: 2px;
-      min-width: 260px;
     }
-    .brand h1{
-      margin:0;
-      font-size: 1.15rem;
+    .brand strong{
+      font-size: 1.02rem;
       letter-spacing: .2px;
-      font-weight: 800;
     }
-    .brand p{
-      margin:0;
+    .brand span{
       font-size: .9rem;
       color: var(--muted);
       font-weight: 600;
     }
 
-    nav ul{
-      list-style:none;
+    .links{
       display:flex;
       gap: 10px;
-      padding:0;
-      margin:0;
-      align-items:center;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
-    nav a{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
+    .chip{
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid transparent;
       font-weight: 700;
       font-size: .92rem;
-      color: var(--text);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-      white-space: nowrap;
+      color: #111827;
+      background: rgba(255,255,255,.7);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
-
-    nav a:hover{
-      border-color: var(--border);
-      background: rgba(255,255,255,.06);
+    .chip:hover{
       transform: translateY(-1px);
+      border-color: var(--line);
+      background: #fff;
     }
 
-    .nav-cta{
-      background: linear-gradient(90deg, rgba(34,211,238,.9), rgba(167,139,250,.9));
+    .chip.cta{
+      background: linear-gradient(90deg, var(--primary), #7c3aed);
+      color: white;
       border-color: transparent;
-      color: #08101f;
-      box-shadow: 0 10px 22px rgba(34,211,238,.18);
+      box-shadow: 0 10px 24px rgba(37,99,235,.20);
     }
-    .nav-cta:hover{
-      background: linear-gradient(90deg, rgba(34,211,238,1), rgba(167,139,250,1));
-      border-color: transparent;
-      transform: translateY(-1px);
-    }
+    .chip.cta:hover{ transform: translateY(-1px); }
 
-    /* Layout */
-    main{
-      padding: 26px 0 60px;
-    }
-
-    section{
-      scroll-margin-top: 92px;
-    }
-
-    .card{
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
+    main{ padding: 28px 0 70px; }
+    section{ scroll-margin-top: 88px; }
 
     .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      align-items: stretch;
-      margin-top: 10px;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.78)),
+        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
     }
 
-    .kicker{
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      padding: 34px;
+      align-items: stretch;
+    }
+
+    .badge{
       display:inline-flex;
       align-items:center;
       gap: 10px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(34,211,238,.12);
-      border: 1px solid rgba(34,211,238,.25);
-      color: rgba(255,255,255,.92);
-      font-weight: 800;
-      font-size: .85rem;
       width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(37,99,235,.12);
+      border: 1px solid rgba(37,99,235,.25);
+      color: #1f3fbf;
+      font-weight: 800;
+      font-size: .86rem;
     }
 
-    .hero h2{
-      margin: 14px 0 10px;
-      font-size: 2.05rem;
-      line-height: 1.15;
-      letter-spacing: -0.4px;
+    h1{
+      margin: 12px 0 10px;
+      font-size: 2.3rem;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
     }
 
-    .hero p{
+    .lead{
       margin: 0;
-      color: var(--muted);
-      max-width: 62ch;
+      color: rgba(17,24,39,.78);
       font-weight: 600;
+      max-width: 62ch;
     }
 
-    .actions{
+    .buttons{
       margin-top: 14px;
       display:flex;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .btn{
@@ -199,100 +169,49 @@
       align-items:center;
       justify-content:center;
       padding: 11px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
       font-weight: 800;
-      font-size: .95rem;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
       cursor: pointer;
-      user-select: none;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(0,0,0,.25);
-    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(17,24,39,.10); }
 
-    .btn-primary{
-      background: linear-gradient(90deg, rgba(251,113,133,.95), rgba(167,139,250,.95));
-      color: #0b1220;
+    .btn.primary{
       border-color: transparent;
-    }
-    .btn-primary:hover{
-      background: linear-gradient(90deg, rgba(251,113,133,1), rgba(167,139,250,1));
-    }
-
-    .profile{
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06)),
-        radial-gradient(900px 420px at 10% 0%, rgba(34,211,238,.18), transparent 55%),
-        radial-gradient(900px 420px at 90% 20%, rgba(251,113,133,.16), transparent 55%);
+      background: linear-gradient(90deg, var(--primary), #7c3aed);
+      color: white;
     }
 
-    .avatar-wrap{
-      display:flex;
-      gap: 14px;
-      align-items:center;
-      margin-bottom: 14px;
+    .panel{
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.88);
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(17,24,39,.08);
     }
 
-    .avatar{
-      width: 62px;
-      height: 62px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,.06)),
-        linear-gradient(135deg, rgba(34,211,238,.55), rgba(167,139,250,.55), rgba(251,113,133,.45));
-      box-shadow: 0 14px 30px rgba(0,0,0,.25);
-    }
-
-    .tag-row{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .quick{
+      display:grid;
+      gap: 10px;
       margin-top: 10px;
     }
 
-    .pill{
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: .82rem;
-      font-weight: 800;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.88);
-    }
-    .pill.aqua{ border-color: rgba(34,211,238,.35); }
-    .pill.violet{ border-color: rgba(167,139,250,.35); }
-    .pill.pink{ border-color: rgba(251,113,133,.35); }
-    .pill.lime{ border-color: rgba(163,230,53,.35); }
-
-    .mini{
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stat{
+    .row{
       display:flex;
       align-items:center;
       justify-content: space-between;
       gap: 10px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid var(--border);
+      padding: 12px 12px;
       border-radius: 14px;
-      padding: 12px 14px;
+      background: var(--soft);
+      border: 1px solid rgba(37,99,235,.12);
+      font-weight: 800;
     }
-    .stat strong{
-      font-size: 1.05rem;
-    }
-    .stat span{
-      color: var(--muted);
+    .row span{
       font-weight: 700;
+      color: var(--muted);
     }
 
     .grid{
@@ -302,418 +221,85 @@
       margin-top: 18px;
     }
 
-    .section-title{
-      display:flex;
-      align-items:flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 8px;
-    }
-    .section-title h3{
-      margin:0;
-      font-size: 1.35rem;
-      letter-spacing: -0.25px;
-    }
-    .muted{
-      color: var(--muted);
-      font-weight: 650;
-      margin: 0;
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 14px 40px rgba(17,24,39,.08);
     }
 
-    .divider{
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-      margin: 16px 0;
-    }
-
-    /* Timeline */
-    .timeline{
-      display:grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .item{
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(255,255,255,.07);
-    }
-
-    .item h4{
-      margin: 0 0 4px;
-      font-size: 1.02rem;
-      letter-spacing: -0.15px;
-    }
-    .item .sub{
+    .card h2{
       margin: 0 0 10px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: .92rem;
-    }
-    .item ul{
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    .item li{ margin: 6px 0; }
-
-    /* Featured section */
-    .featured-header{
-      display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.2px;
     }
 
-    .featured-title{
-      display:flex;
-      flex-direction: column;
-      gap: 4px;
-      max-width: 65ch;
-    }
-    .featured-title p{
-      margin:0;
-      color: var(--muted);
-      font-weight: 650;
-    }
+    .muted{ color: var(--muted); font-weight: 600; margin: 0; }
 
-    .featured-meta{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items:center;
-    }
+    ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-weight: 600; }
+    li{ margin: 7px 0; }
 
-    .metrics{
+    .contact-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
     }
 
-    .metric{
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(255,255,255,.07);
-    }
-    .metric strong{
-      display:block;
-      font-size: .95rem;
-    }
-    .metric span{
-      display:block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    /* Contact */
-    form{
-      display:grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    label{
-      display:flex;
-      flex-direction: column;
-      gap: 6px;
-      font-weight: 800;
-    }
-
+    form{ display:grid; gap: 10px; margin-top: 8px; }
+    label{ font-weight: 800; display:grid; gap: 6px; }
     input, textarea{
+      font: inherit;
       padding: 12px 12px;
       border-radius: 14px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       outline: none;
-      font: inherit;
-      background: rgba(255,255,255,.06);
-      color: var(--text);
+      background: #fff;
     }
-
     textarea{ resize: vertical; }
 
-    /* Footer */
     footer{
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--line);
       padding: 22px 0;
-      background: rgba(11,18,32,.35);
-    }
-    .footer-inner{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-weight: 650;
-      font-size: .9rem;
-    }
-
-    .tiny{
-      font-size: .9rem;
       color: var(--muted);
       font-weight: 650;
     }
 
     @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
+      .hero-inner{ grid-template-columns: 1fr; }
       .grid{ grid-template-columns: 1fr; }
-      .metrics{ grid-template-columns: 1fr; }
-      .brand{ min-width: unset; }
+      .contact-grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 2rem; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
-    <div class="container">
-      <div class="header-inner">
-        <div class="brand">
-          <h1>Ariana Van Ormer</h1>
-          <p>Business Student • Tech + Entrepreneurship • Babson College</p>
-        </div>
-
-        <nav aria-label="Primary navigation">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#featured">Featured</a></li>
-            <li><a class="nav-cta" href="#contact">Let’s Connect</a></li>
-          </ul>
-        </nav>
+    <div class="container nav">
+      <div class="brand">
+        <strong>Ariana Van Ormer</strong>
+        <span>Babson College • Business + Tech + Entrepreneurship</span>
       </div>
+      <nav class="links" aria-label="Primary navigation">
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#projects">Projects</a>
+        <a class="chip" href="#contact">Contact</a>
+        <a class="chip cta" href="#contact">Let’s Connect</a>
+      </nav>
     </div>
   </header>
 
   <main class="container">
-
-    <!-- HERO -->
-    <section id="home" class="hero">
-      <div class="card">
-        <div class="kicker">✨ Building at the intersection of business & tech</div>
-        <h2>Hi, I’m Ariana — I love turning ideas into real products.</h2>
-        <p>
-          I’m a Babson College business student focused on <strong>entrepreneurship</strong>, <strong>technology</strong>,
-          and <strong>innovation</strong>. I’m especially interested in how AI can enhance customer experiences,
-          operations, and new venture creation.
-        </p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn" href="#contact">Contact Me</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <p class="muted">
-          Tip: This site was generated with AI so I can practice reading and understanding modern HTML/CSS.
-        </p>
-      </div>
-
-      <div class="card profile">
-        <div class="avatar-wrap">
-          <div class="avatar" aria-hidden="true"></div>
-          <div>
-            <h3 style="margin:0;">Quick Snapshot</h3>
-            <p class="muted" style="margin:4px 0 0;">Global perspective • Fast learner • Builder mindset</p>
-          </div>
-        </div>
-
-        <div class="tag-row">
-          <span class="pill aqua">Tech Entrepreneurship</span>
-          <span class="pill violet">Marketing</span>
-          <span class="pill pink">Product Thinking</span>
-          <span class="pill lime">Innovation</span>
-        </div>
-
-        <div class="mini">
-          <div class="stat">
-            <strong>Babson College</strong>
-            <span>Class of 2028</span>
-          </div>
-          <div class="stat">
-            <strong>Interests</strong>
-            <span>AI • Startups • Brand</span>
-          </div>
-          <div class="stat">
-            <strong>Energy</strong>
-            <span>Curious & action-oriented</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT + PROJECTS GRID -->
-    <section class="grid" aria-label="About and Projects">
-      <div id="about" class="card">
-        <div class="section-title">
-          <h3>About</h3>
-          <p class="muted">Who I am & what I care about</p>
-        </div>
-
-        <p class="muted">
-          I’m driven by the idea that <strong>change is leverage</strong>. Growing up internationally helped me adapt fast,
-          connect across cultures, and stay curious. I’m excited by projects where strategy meets execution — especially
-          in tech-enabled business models.
-        </p>
-
-        <div class="divider"></div>
-
-        <div class="timeline">
-          <div class="item">
-            <h4>What I’m exploring right now</h4>
-            <p class="sub">Tech + entrepreneurship concentration focus</p>
-            <ul>
-              <li>How AI changes customer behavior and operational decisions</li>
-              <li>Building strong value propositions & go-to-market plans</li>
-              <li>Designing products people actually want to use</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div id="projects" class="card">
-        <div class="section-title">
-          <h3>Projects</h3>
-          <p class="muted">Hands-on work & experiments</p>
-        </div>
-
-        <div class="timeline">
-          <div class="item">
-            <h4>Personal Website (AI-generated)</h4>
-            <p class="sub">HTML • CSS • GitHub Pages</p>
-            <ul>
-              <li>Used AI to generate a richer site for code-reading practice</li>
-              <li>Improved layout, navigation, responsiveness, and UI cards</li>
-              <li>Deployed using GitHub Pages</li>
-            </ul>
-          </div>
-
-          <div class="item">
-            <h4>Venture / Class Projects</h4>
-            <p class="sub">Strategy • Marketing • Operations</p>
-            <ul>
-              <li>Customer insights + value proposition development</li>
-              <li>Market segmentation & positioning</li>
-              <li>Iterative improvement based on feedback</li>
-            </ul>
-          </div>
-
-          <div class="item">
-            <h4>Research Interests</h4>
-            <p class="sub">Business + technology topics</p>
-            <ul>
-              <li>AI in consumer experiences and decision-making</li>
-              <li>Food & retail trends from a business lens</li>
-              <li>Supplier relationships, negotiating power, and performance</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED -->
-    <section id="featured" class="card" aria-label="Featured Item">
-      <div class="featured-header">
-        <div class="featured-title">
-          <h3 style="margin:0;">Featured Spotlight</h3>
-          <p>
-            A place to highlight one project, experience, or interest area. Keep this section “rich” for learning —
-            it’s great for practicing how to read CSS grids, cards, and responsive rules.
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">✨ Portfolio in progress (AI-generated for learning)</div>
+          <h1>Building ideas into real, usable experiences.</h1>
+          <p class="lead">
+            I’m Ariana — a Babson business student focused on entrepreneurship, technology, and innovation.
+            I’m especially interested in how AI and data shape customer behavior, products, and strategy.
           </p>
-        </div>
-
-        <div class="featured-meta">
-          <span class="pill violet">UI Cards</span>
-          <span class="pill aqua">Responsive Grid</span>
-          <span class="pill pink">Gradients</span>
-        </div>
-      </div>
-
-      <div class="metrics">
-        <div class="metric">
-          <strong>Goal</strong>
-          <span>Build a portfolio I can expand</span>
-        </div>
-        <div class="metric">
-          <strong>Skill Focus</strong>
-          <span>Reading modern HTML/CSS</span>
-        </div>
-        <div class="metric">
-          <strong>Next Iteration</strong>
-          <span>Add real links + images</span>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <p class="muted">
-        Want to add a real photo? Replace the colored avatar with an image:
-        you can swap the <strong>.avatar</strong> div for an <strong>&lt;img&gt;</strong> tag later.
-      </p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="grid" aria-label="Contact">
-      <div class="card">
-        <div class="section-title">
-          <h3>Contact</h3>
-          <p class="muted">Reach out anytime</p>
-        </div>
-
-        <p class="muted">
-          Email is the fastest way to reach me. I’m always open to collaboration, internships,
-          and conversations about tech, startups, and innovation.
-        </p>
-
-        <div class="divider"></div>
-
-        <p class="muted"><strong>Email:</strong> avanormer1@babson.edu</p>
-        <p class="muted"><strong>LinkedIn:</strong> (add your link here)</p>
-        <p class="muted"><strong>GitHub:</strong> (add your link here)</p>
-      </div>
-
-      <div class="card">
-        <div class="section-title">
-          <h3>Quick Message</h3>
-          <p class="muted">Form is for design practice</p>
-        </div>
-
-        <form onsubmit="event.preventDefault(); alert('Thanks! This form is for design practice—email me instead.');">
-          <label>
-            Name
-            <input type="text" placeholder="Your name" />
-          </label>
-
-          <label>
-            Message
-            <textarea rows="5" placeholder="Write a short message..."></textarea>
-          </label>
-
-          <button class="btn btn-primary" type="submit">Send</button>
-          <p class="tiny">Note: This form doesn’t send emails — it’s just for learning UI.</p>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Ariana Van Ormer</span>
-      <span class="tiny">Built with AI • Deployed on GitHub Pages</span>
-    </div>
-  </footer>
-
-</body>
-</html>
+          <div class="buttons">
+            <a class="btn primary" href="#projects">View Projects</a>
