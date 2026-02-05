@@ -626,3 +626,94 @@
     <section id="featured" class="card" aria-label="Featured Item">
       <div class="featured-header">
         <div class="featured-title">
+          <h3 style="margin:0;">Featured Spotlight</h3>
+          <p>
+            A place to highlight one project, experience, or interest area. Keep this section “rich” for learning —
+            it’s great for practicing how to read CSS grids, cards, and responsive rules.
+          </p>
+        </div>
+
+        <div class="featured-meta">
+          <span class="pill violet">UI Cards</span>
+          <span class="pill aqua">Responsive Grid</span>
+          <span class="pill pink">Gradients</span>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong>Goal</strong>
+          <span>Build a portfolio I can expand</span>
+        </div>
+        <div class="metric">
+          <strong>Skill Focus</strong>
+          <span>Reading modern HTML/CSS</span>
+        </div>
+        <div class="metric">
+          <strong>Next Iteration</strong>
+          <span>Add real links + images</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="muted">
+        Want to add a real photo? Replace the colored avatar with an image:
+        you can swap the <strong>.avatar</strong> div for an <strong>&lt;img&gt;</strong> tag later.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="grid" aria-label="Contact">
+      <div class="card">
+        <div class="section-title">
+          <h3>Contact</h3>
+          <p class="muted">Reach out anytime</p>
+        </div>
+
+        <p class="muted">
+          Email is the fastest way to reach me. I’m always open to collaboration, internships,
+          and conversations about tech, startups, and innovation.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="muted"><strong>Email:</strong> avanormer1@babson.edu</p>
+        <p class="muted"><strong>LinkedIn:</strong> (add your link here)</p>
+        <p class="muted"><strong>GitHub:</strong> (add your link here)</p>
+      </div>
+
+      <div class="card">
+        <div class="section-title">
+          <h3>Quick Message</h3>
+          <p class="muted">Form is for design practice</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Thanks! This form is for design practice—email me instead.');">
+          <label>
+            Name
+            <input type="text" placeholder="Your name" />
+          </label>
+
+          <label>
+            Message
+            <textarea rows="5" placeholder="Write a short message..."></textarea>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Send</button>
+          <p class="tiny">Note: This form doesn’t send emails — it’s just for learning UI.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Ariana Van Ormer</span>
+      <span class="tiny">Built with AI • Deployed on GitHub Pages</span>
+    </div>
+  </footer>
+
+</body>
+</html>
